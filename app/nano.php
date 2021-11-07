@@ -3,7 +3,7 @@
 namespace nano;
 
 require_once("vendor/autoload.php");
-require_once("config.php");
+//require_once("config.php");
 //require_once("exceptions.php");
 require_once("objects/objects.php");
 require_once("controllers/controllers.php");
@@ -35,13 +35,6 @@ class App {
   public $postController;
   
   function __construct(PDO $db = null) {
-    //Load environment variables
-    Dotenv::createImmutable(__DIR__."/../..")->load();
-
-    //If a DB instance has been passed (nested App objects), reuse the connection. Otherwise create
-    //a new one.
-    
-//    die(__DIR__);
     
     $this->db = ($db) ? $db : new PDO('sqlite:'.__DIR__.'/../../nano.db');
 

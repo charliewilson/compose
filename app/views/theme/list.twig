@@ -10,23 +10,38 @@
 <body>
 <div class="container">
   <header>
-    <h1>words</h1>
+    <h1>words<span>.charlie.town</span></h1>
   </header>
   <section class="posts">
     {% if posts|length == 0 %}
       <p>No posts yet...</p>
     {% else %}
       {% for post in posts %}
-        <div class="post type-{{ post.type }}">
-        {% if post.title %}<p class="title">{{ post.title }}</p>{% endif %}
-        <p class="body">{{ post.body.html|raw }}</p>
-          <p class="date">
-            <a href="/post/{{ post.id }}">{{ post.date|date("d/m/y") }}</a>
-            {% if loggedIn %}
-              &mdash; <a href="/nano/post/{{ post.id }}">Edit</a>
-            {% endif %}
-          </p>
-        </div>
+        {% if post.type == "photo" %}
+          <div class="post type-photo">
+            <div class="body">
+              <img src="/media/uploads/{{ post.body.markdown }}">
+              <p>{{ post.title }}</p>
+            </div>
+            <p class="date">
+              <a href="/post/{{ post.id }}">{{ post.date|date("d/m/y") }}</a>
+              {% if loggedIn %}
+                &mdash; <a href="/nano/photo/{{ post.id }}">Edit</a>
+              {% endif %}
+            </p>
+          </div>
+        {% else %}
+          <div class="post type-{{ post.type }}">
+          {% if post.title %}<p class="title">{{ post.title }}</p>{% endif %}
+          <div class="body">{{ post.body.html|raw }}</div>
+            <p class="date">
+              <a href="/post/{{ post.id }}">{{ post.date|date("d/m/y") }}</a>
+              {% if loggedIn %}
+                &mdash; <a href="/nano/post/{{ post.id }}">Edit</a>
+              {% endif %}
+            </p>
+          </div>
+        {% endif %}
       {% endfor %}
     {% endif %}
   </section>

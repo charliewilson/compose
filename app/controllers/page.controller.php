@@ -157,7 +157,8 @@ class PageController {
       try {
         echo $this->app->twig->render('admin/home.twig', [
           "me" => $this->app->auth->getUsername(),
-          "posts" => $this->app->postController->getAll(["includeDrafts" => true])
+          "posts" => $this->app->postController->getAll(["ofType" => "post", "includeDrafts" => true]),
+          "photos" => $this->app->postController->getAll(["ofType" => "photo", "includeDrafts" => true])
         ]);
       } catch (LoaderError | RuntimeError | SyntaxError $e) {
         $this->errorMessage($e->getMessage());
@@ -179,6 +180,68 @@ class PageController {
         $this->errorMessage($e->getMessage());
       }
       die();
+    } else {
+      header("Location: /login");
+    }
+  }
+  
+  public function adminNewPhotoGet() {
+    if ($this->app->auth->isLoggedIn()){
+      try {
+        echo $this->app->twig->render('admin/newphoto.twig', [
+          "me" => $this->app->auth->getUsername(),
+          "timestamp" => date("Y-m-d H:i")
+        ]);
+      } catch (LoaderError | RuntimeError | SyntaxError $e) {
+        $this->errorMessage($e->getMessage());
+      }
+      die();
+    } else {
+      header("Location: /login");
+    }
+  }
+  
+  public function adminNewPhotoPost() {
+    if ($this->app->auth->isLoggedIn()){
+      
+      $response = $this->app->postController->create($_POST);
+      
+      if ($response === true) {
+        header("Location: /nano");
+      } else {
+        $this->app->pageController->errorMessage($response);
+      }
+    } else {
+      header("Location: /login");
+    }
+  }
+  
+  public function adminEditPhotoGet($params) {
+    if ($this->app->auth->isLoggedIn()){
+      try {
+        echo $this->app->twig->render('admin/editphoto.twig', [
+          "me" => $this->app->auth->getUsername(),
+          "photo" => $this->app->postController->get(filter_var($params['id'], FILTER_SANITIZE_NUMBER_INT), ["asType" => "photo"])[0]
+        ]);
+      } catch (LoaderError | RuntimeError | SyntaxError $e) {
+        $this->errorMessage($e->getMessage());
+      }
+      die();
+    } else {
+      header("Location: /login");
+    }
+  }
+  
+  public function adminEditPhotoPost($params) {
+    if ($this->app->auth->isLoggedIn()){
+      
+      $response = $this->app->postController->update(filter_var($params['id'], FILTER_SANITIZE_NUMBER_INT),$_POST);
+      
+      if ($response === true) {
+        header("Location: /nano");
+      } else {
+        $this->app->pageController->errorMessage($response);
+      }
     } else {
       header("Location: /login");
     }

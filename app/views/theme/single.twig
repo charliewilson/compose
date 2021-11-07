@@ -10,13 +10,13 @@
 <body>
 <div class="container">
   <header>
-    <h1>words</h1>
+    <h1>words<span>.charlie.town</span></h1>
     <a href="/" class="homepage-link">&#8592; back to blog</a>
   </header>
   <section class="posts">
       <div class="post post-single type-{{ post.type }}">
       {% if post.title %}<p class="title">{{ post.title }}</p>{% endif %}
-      <p class="body">{{ post.body.html|raw }}</p>
+      <div class="body">{{ post.body.html|raw }}</div>
         <p class="date">
           {{ post.date|date("d/m/y") }}
           {% if loggedIn %}

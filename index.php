@@ -30,10 +30,14 @@ try {
     ['GET', '/nano/newpost', 'adminNewPostGet'],
     ['POST', '/nano/newpost', 'adminNewPostPost'],
     ['GET', '/nano/newphoto', 'adminNewPhotoGet'],
+    ['POST', '/nano/newphoto', 'adminNewPhotoPost'],
   
     ['GET', '/nano/post/[i:id]', 'adminEditPostGet'],
     ['GET', '/nano/post/[i:id]/delete', 'adminDeletePostGet'],
     ['POST', '/nano/post/[i:id]', 'adminEditPostPost'],
+  
+    ['GET', '/nano/photo/[i:id]', 'adminEditPhotoGet'],
+    ['POST', '/nano/photo/[i:id]', 'adminEditPhotoPost'],
   
     ['POST', '/dump', 'dumpPost']
   ]);

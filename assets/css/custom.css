@@ -6,3 +6,12 @@
 /*  in your page by adding a reference to assets/css/custom.css in the head of each page.
 /*
 */
+
+/*#imageModal .modal-dialog{*/
+/*    max-width:505px;*/
+/*    width:926px;*/
+/*}*/
+
+img.adminImageThumbnail {
+    max-width:100%;
+}
