@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>words</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="words by charlie wilson" />
+  <link rel="stylesheet" href="/dist/css/style.css">
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>words</h1>
+  </header>
+  <section class="posts">
+    {% if posts|length == 0 %}
+      <p>No posts yet...</p>
+    {% else %}
+      {% for post in posts %}
+        <div class="post type-{{ post.type }}">
+        {% if post.title %}<p class="title">{{ post.title }}</p>{% endif %}
+        <p class="body">{{ post.body.html|raw }}</p>
+          <p class="date">
+            <a href="/post/{{ post.id }}">{{ post.date|date("d/m/y") }}</a>
+            {% if loggedIn %}
+              &mdash; <a href="/nano/post/{{ post.id }}">Edit</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </section>
+</div>
+</body>
+</html>

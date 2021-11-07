@@ -1,0 +1,14 @@
+{
+    "require": {
+        "delight-im/auth": "^8.1",
+        "altorouter/altorouter": "^2.0",
+        "vlucas/phpdotenv": "^4.1",
+        "ext-pdo": "*",
+        "twig/twig": "^3.3",
+        "twig/intl-extra": "^3.3",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "erusev/parsedown": "^1.7",
+        "intervention/image": "^2.7"
+    }
+}

@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('fonts/Lato-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+div.container {
+    width:100%;
+    max-width:800px;
+    margin:auto;
+}
+
+header {
+    border-bottom:1px solid grey;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 0;
+}
+
+header h1 {
+    margin:0;
+    font-size:36px;
+}
+
+header a.homepage-link {
+    color:#777;
+}
+header a.homepage-link:hover {
+    color: #ababab;
+}
+
+section.posts div.post {
+    border-bottom:1px solid grey;
+    line-height:1.6;
+    font-size:16px;
+}
+
+section.posts div.post:last-of-type {
+    border-bottom:none;
+}
+
+section.posts div.post p.title {
+    font-weight:bold;
+    font-size: 20px;
+}
+
+section.posts div.post p.date {
+    font-style:italic;
+    font-size:12px;
+    color: #757575;
+}
+
+section.posts div.post blockquote {
+    padding: 0 0 0 1.5rem;
+    margin: 0 2rem 1rem 0;
+    color: #757575;
+    border-left: .5rem solid #e5e5e5;
+}
+
+section.posts div.post a {
+    color: #0167a4;
+}
+
+section.posts div.post a:hover {
+    color: #0191de;
+}
+
+section.posts div.post img {
+    max-width:100%;
+}
+
+section.posts div.post div.youtube {
+    position: relative;
+    max-width: 100%;
+    width:100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+section.posts div.post div.youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
