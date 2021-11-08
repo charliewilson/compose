@@ -24,12 +24,11 @@
             
             <div class="card">
               <div class="card-body">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
   
                   <div class="mb-2">
-                    <img id="thumbnail_placeholder" src="/dist/img/placeholder.png" style="width:100%; margin-bottom:10px;">
-                    <a id="addImageButton" href="#" class="btn btn-dark btn-block">Upload Image</a>
-                    <input type="hidden" name="image_encoded" id="image_encoded">
+                    <label for="imageInput">Image File: </label>
+                    <input id="imageInput" type="file" name="image">
                   </div>
                   
                   <div class="form-group">

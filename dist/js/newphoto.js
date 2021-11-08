@@ -33,7 +33,7 @@ $uploadCrop = $('#upload-demo').croppie({
         width: 300,
         height: 200
     },
-    enableExif: true
+    enableExif: true,
 });
 
 let saveImageButton = document.querySelector("a.btn-saveimage");

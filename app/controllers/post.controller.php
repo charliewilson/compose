@@ -120,9 +120,15 @@ class PostController {
       $filename = (new DateTime)->getTimestamp();
   
       //upload image if attached
-      if (isset($fields['image_encoded']) && $fields['image_encoded'] != "") {
-        $img = Image::make($fields['image_encoded']);
-        $img->save('media/uploads/' . $filename . '.jpg', 80);
+      if (isset($_FILES['image']['tmp_name'])) {
+        $img = Image::make($_FILES['image']['tmp_name'])->orientate();
+
+        $img->resize(800, 655, function ($constraint) {
+          $constraint->aspectRatio();
+          $constraint->upsize();
+        });
+
+        $img->save('media/uploads/' . $filename . '.jpg', 90);
       } else {
         header("Location: /nano/newphoto?nophoto");
         die();
