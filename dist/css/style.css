@@ -48,11 +48,28 @@ header h1 span {
     color: #999;
 }
 
+header a {
+    color: #000;
+}
+
+header a:hover {
+    color: #0191de;
+}
+
 header a.homepage-link {
     color:#777;
 }
 header a.homepage-link:hover {
     color: #ababab;
+}
+
+section a {
+    color: #0167a4;
+}
+
+section a:hover,
+header a:hover{
+    color: #0191de;
 }
 
 section.posts div.post {
@@ -81,14 +98,6 @@ section.posts div.post blockquote {
     margin: 0 2rem 1rem 0;
     color: #757575;
     border-left: .5rem solid #e5e5e5;
-}
-
-section.posts div.post a {
-    color: #0167a4;
-}
-
-section.posts div.post a:hover {
-    color: #0191de;
 }
 
 section.posts div.post img {
@@ -120,4 +129,13 @@ section.posts div.post.type-photo img {
     width:auto;
     max-height: 600px;
     margin-top:16px;
+}
+
+section.pagination {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:25px 0;
 }

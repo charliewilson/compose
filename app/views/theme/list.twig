@@ -10,7 +10,7 @@
 <body>
 <div class="container">
   <header>
-    <h1>words<span>.charlie.town</span></h1>
+    <h1><a href="/">words</a><span>.charlie.town</span></h1>
   </header>
   <section class="posts">
     {% if posts|length == 0 %}
@@ -44,6 +44,18 @@
         {% endif %}
       {% endfor %}
     {% endif %}
+  </section>
+  <section class="pagination">
+    <div class="newer">
+      {% if (currentPage > 1) %}
+        <a href="/page/{{ currentPage - 1 }}">&larr;&nbsp;Newer Posts</a>
+      {% endif %}
+    </div>
+    <div class="older">
+      {% if (currentPage < lastPage) %}
+        <a href="/page/{{ currentPage + 1 }}">Older Posts&nbsp;&rarr;</a>
+      {% endif %}
+    </div>
   </section>
 </div>
 </body>

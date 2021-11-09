@@ -57,18 +57,20 @@ class App {
 
 class AppData {
 
-  public $appName, $version;
+  public $appName, $version, $postsPerPage;
 
   function __construct() {
     $this->appName = 'nano';
     $this->version = '1.0';
+    $this->postsPerPage = 10;
   }
 
   public function get() {
     return [
       "name" => $this->appName,
       "version" => $this->version,
-      "year" => date("Y")
+      "year" => date("Y"),
+      "postsPerPage" => $this->postsPerPage
     ];
   }
 

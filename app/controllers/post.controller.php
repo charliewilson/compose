@@ -71,6 +71,67 @@ class PostController {
     }
     
   }
+
+  public function getPage($page = 1, $options = []) {
+
+    $defaultOptions = [
+      "ofType" => "all",
+      "includeDrafts" => false
+    ];
+    foreach($options as $option=>$value) {
+      if (isset($defaultOptions[$option])) {
+        $defaultOptions[$option] = $value;
+      }
+    }
+
+    switch ($defaultOptions['ofType']) {
+      case "all":
+      default:
+        if ($defaultOptions["includeDrafts"] == true) {
+          $statement = "SELECT * FROM `posts` ORDER BY `timestamp` DESC LIMIT :offset, :limit";
+        } else {
+          $statement = "SELECT * FROM `posts` WHERE published = 1 ORDER BY `timestamp` DESC LIMIT :offset, :limit";
+        }
+        break;
+      case "post":
+        if ($defaultOptions["includeDrafts"] == true) {
+          $statement = "SELECT * FROM `posts` WHERE `type` = 'post' ORDER BY `timestamp` DESC LIMIT :offset, :limit";
+        } else {
+          $statement = "SELECT * FROM `posts` WHERE `type` = 'post' AND published = 1 ORDER BY `timestamp` DESC LIMIT :offset, :limit";
+        }
+        break;
+      case "photo":
+        if ($defaultOptions["includeDrafts"] == true) {
+          $statement = "SELECT * FROM `posts` WHERE `type` = 'photo' ORDER BY `timestamp` DESC LIMIT :offset, :limit";
+        } else {
+          $statement = "SELECT * FROM `posts` WHERE `type` = 'photo' AND published = 1 ORDER BY `timestamp` DESC LIMIT :offset, :limit";
+        }
+        break;
+    }
+
+    $people = $this->app->db->prepare($statement);
+    $people->execute([
+      ":offset" => ($page - 1) * $this->app->appData->get()['postsPerPage'],
+      ":limit" => $this->app->appData->get()['postsPerPage']
+    ]);
+
+
+    switch ($defaultOptions['ofType']) {
+      case "all":
+      case "post":
+      default:
+        return $people->fetchAll(PDO::FETCH_CLASS,'\nano\Post', [
+          $this->app->db
+        ]);
+        break;
+      case "photo":
+        return $people->fetchAll(PDO::FETCH_CLASS,'\nano\Photo', [
+          $this->app->db
+        ]);
+        break;
+    }
+
+  }
   
   public function get($id, $options = []) {
     

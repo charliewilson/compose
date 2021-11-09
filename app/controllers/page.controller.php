@@ -74,10 +74,33 @@ class PageController {
   //INDEX
   public function indexGet() {
     try {
+      $posts = $this->app->postController->getAll();
+      $lastPage = ceil(count($posts) / $this->app->appData->get()['postsPerPage']);
+
       echo $this->app->twig->render('/theme/list.twig', [
         "appData" => $this->app->appData->get(),
         "loggedIn" => $this->app->auth->isLoggedIn(),
-        "posts" => $this->app->postController->getAll()
+        "posts" => $this->app->postController->getPage(1),
+        "currentPage" => 1,
+        "lastPage" => $lastPage
+      ]);
+    } catch (LoaderError | RuntimeError | SyntaxError $e) {
+      $this->errorMessage($e->getMessage());
+    }
+    die();
+  }
+
+  public function pageGet($params) {
+    try {
+      $posts = $this->app->postController->getAll();
+      $lastPage = ceil(count($posts) / $this->app->appData->get()['postsPerPage']);
+
+      echo $this->app->twig->render('/theme/list.twig', [
+        "appData" => $this->app->appData->get(),
+        "loggedIn" => $this->app->auth->isLoggedIn(),
+        "posts" => $this->app->postController->getPage($params['page']),
+        "currentPage" => $params['page'],
+        "lastPage" => $lastPage
       ]);
     } catch (LoaderError | RuntimeError | SyntaxError $e) {
       $this->errorMessage($e->getMessage());

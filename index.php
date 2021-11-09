@@ -20,6 +20,7 @@ try {
   $app->router->addRoutes([
     //Blog
     ['GET', '/', 'indexGet'],
+    ['GET', '/page/[i:page]', 'pageGet'],
     ['GET', '/post/[i:id]', 'postGet'],
     //Login
     ['GET', '/login', 'loginGet'],
