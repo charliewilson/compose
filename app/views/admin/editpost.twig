@@ -44,7 +44,8 @@
                   </div>
                   
                   <div class="form-group">
-                  <div id="bodyTextarea" name="body">{{ post.body.markdown }}</div>
+                    <div id="bodyTextarea"></div>
+                    <input id="formText" name="body" type="hidden" value="{{ post.body.markdown }}">
                   </div>
                   
                   <div class="d-flex justify-content-between align-items-center">
@@ -83,9 +84,17 @@
 {% block js %}
   <script src="https://cdn.quilljs.com/1.2.6/quill.min.js"></script>
   <script>
+    let formText = document.getElementById("formText");
+
     var quill = new Quill('#bodyTextarea', {
-      placeholder: 'Compose an epic...',
+      placeholder: 'Loading...',
       theme: 'snow'  // or 'bubble'
+    });
+
+    quill.clipboard.dangerouslyPasteHTML(formText.value);
+
+    quill.on('text-change',() => {
+      formText.value = quill.container.firstChild.innerHTML;
     });
   </script>
 {% endblock %}
