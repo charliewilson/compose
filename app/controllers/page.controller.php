@@ -1,5 +1,5 @@
 <?php
-namespace nano;
+namespace compose;
 
 use Delight\Auth\AmbiguousUsernameException;
 use Delight\Auth\AuthError;

@@ -1,6 +1,6 @@
 <?php
 
-namespace nano;
+namespace compose;
 
 require_once("vendor/autoload.php");
 //require_once("config.php");
@@ -36,7 +36,7 @@ class App {
   
   function __construct(PDO $db = null) {
     
-    $this->db = ($db) ? $db : new PDO('sqlite:'.__DIR__.'/../../nano.db');
+    $this->db = ($db) ? $db : new PDO('sqlite:'.__DIR__.'/../../compose.db');
 
     $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $this->router = new AltoRouter();
@@ -60,7 +60,7 @@ class AppData {
   public $appName, $version, $postsPerPage;
 
   function __construct() {
-    $this->appName = 'nano';
+    $this->appName = 'compose';
     $this->version = '1.0';
     $this->postsPerPage = 10;
   }

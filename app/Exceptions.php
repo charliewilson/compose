@@ -1,5 +1,5 @@
 <?php
 
-namespace nano\Exceptions;
+namespace compose\Exceptions;
 
 class PageNotFoundException extends \Exception {}

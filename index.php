@@ -7,11 +7,11 @@ date_default_timezone_set('Europe/London');
 
 require "vendor/autoload.php";
 require "app/Exceptions.php";
-require "app/nano.php";
+require "app/compose.php";
 require "app/controllers/controllers.php";
 require "app/objects/objects.php";
 
-use nano\App;
+use compose\App;
 
 $app = new App;
 
@@ -27,18 +27,13 @@ try {
     ['GET', '/logout', 'logoutGet'],
     ['POST', '/login', 'loginPost'],
     //Admin Homepage
-    ['GET', '/nano', 'adminHomeGet'],
-    ['GET', '/nano/newpost', 'adminNewPostGet'],
-    ['POST', '/nano/newpost', 'adminNewPostPost'],
-    ['GET', '/nano/newphoto', 'adminNewPhotoGet'],
-    ['POST', '/nano/newphoto', 'adminNewPhotoPost'],
-  
-    ['GET', '/nano/post/[i:id]', 'adminEditPostGet'],
-    ['GET', '/nano/post/[i:id]/delete', 'adminDeletePostGet'],
-    ['POST', '/nano/post/[i:id]', 'adminEditPostPost'],
-  
-    ['GET', '/nano/photo/[i:id]', 'adminEditPhotoGet'],
-    ['POST', '/nano/photo/[i:id]', 'adminEditPhotoPost'],
+    ['GET', '/compose', 'adminHomeGet'],
+    ['GET', '/compose/newpost', 'adminNewPostGet'],
+    ['POST', '/compose/newpost', 'adminNewPostPost'],
+
+    ['GET', '/compose/post/[i:id]', 'adminEditPostGet'],
+    ['GET', '/compose/post/[i:id]/delete', 'adminDeletePostGet'],
+    ['POST', '/compose/post/[i:id]', 'adminEditPostPost'],
   
     ['POST', '/dump', 'dumpPost']
   ]);

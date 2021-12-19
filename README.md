@@ -1,2 +1,2 @@
-# nano
-Tiny SQLite platform for Tumblr-like microblogging
+# compose
+Tiny SQLite platform for online poetry

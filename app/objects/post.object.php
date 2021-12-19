@@ -1,5 +1,5 @@
 <?php
-namespace nano;
+namespace compose;
 use Parsedown;
 use PDO;
 

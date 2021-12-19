@@ -1,5 +1,5 @@
 <?php
-namespace nano;
+namespace compose;
 
 use DateTime;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -27,26 +27,11 @@ class PostController {
     }
   
     switch ($defaultOptions['ofType']) {
-      case "all":
       default:
         if ($defaultOptions["includeDrafts"] == true) {
           $statement = "SELECT * FROM `posts` ORDER BY `timestamp` DESC";
         } else {
           $statement = "SELECT * FROM `posts` WHERE published = 1 ORDER BY `timestamp` DESC";
-        }
-        break;
-      case "post":
-        if ($defaultOptions["includeDrafts"] == true) {
-          $statement = "SELECT * FROM `posts` WHERE `type` = 'post' ORDER BY `timestamp` DESC";
-        } else {
-          $statement = "SELECT * FROM `posts` WHERE `type` = 'post' AND published = 1 ORDER BY `timestamp` DESC";
-        }
-        break;
-      case "photo":
-        if ($defaultOptions["includeDrafts"] == true) {
-          $statement = "SELECT * FROM `posts` WHERE `type` = 'photo' ORDER BY `timestamp` DESC";
-        } else {
-          $statement = "SELECT * FROM `posts` WHERE `type` = 'photo' AND published = 1 ORDER BY `timestamp` DESC";
         }
         break;
     }
@@ -56,15 +41,8 @@ class PostController {
   
   
     switch ($defaultOptions['ofType']) {
-      case "all":
-      case "post":
       default:
-        return $people->fetchAll(PDO::FETCH_CLASS,'\nano\Post', [
-          $this->app->db
-        ]);
-        break;
-      case "photo":
-        return $people->fetchAll(PDO::FETCH_CLASS,'\nano\Photo', [
+        return $people->fetchAll(PDO::FETCH_CLASS,'\compose\Post', [
           $this->app->db
         ]);
         break;
@@ -85,26 +63,11 @@ class PostController {
     }
 
     switch ($defaultOptions['ofType']) {
-      case "all":
       default:
         if ($defaultOptions["includeDrafts"] == true) {
           $statement = "SELECT * FROM `posts` ORDER BY `timestamp` DESC LIMIT :offset, :limit";
         } else {
           $statement = "SELECT * FROM `posts` WHERE published = 1 ORDER BY `timestamp` DESC LIMIT :offset, :limit";
-        }
-        break;
-      case "post":
-        if ($defaultOptions["includeDrafts"] == true) {
-          $statement = "SELECT * FROM `posts` WHERE `type` = 'post' ORDER BY `timestamp` DESC LIMIT :offset, :limit";
-        } else {
-          $statement = "SELECT * FROM `posts` WHERE `type` = 'post' AND published = 1 ORDER BY `timestamp` DESC LIMIT :offset, :limit";
-        }
-        break;
-      case "photo":
-        if ($defaultOptions["includeDrafts"] == true) {
-          $statement = "SELECT * FROM `posts` WHERE `type` = 'photo' ORDER BY `timestamp` DESC LIMIT :offset, :limit";
-        } else {
-          $statement = "SELECT * FROM `posts` WHERE `type` = 'photo' AND published = 1 ORDER BY `timestamp` DESC LIMIT :offset, :limit";
         }
         break;
     }
@@ -117,15 +80,8 @@ class PostController {
 
 
     switch ($defaultOptions['ofType']) {
-      case "all":
-      case "post":
       default:
-        return $people->fetchAll(PDO::FETCH_CLASS,'\nano\Post', [
-          $this->app->db
-        ]);
-        break;
-      case "photo":
-        return $people->fetchAll(PDO::FETCH_CLASS,'\nano\Photo', [
+        return $people->fetchAll(PDO::FETCH_CLASS,'\compose\Post', [
           $this->app->db
         ]);
         break;
@@ -150,15 +106,8 @@ class PostController {
     ]);
 
     switch ($defaultOptions['asType']) {
-      case "all":
-      case "post":
       default:
-        return $post->fetchAll(PDO::FETCH_CLASS,'\nano\Post', [
-          $this->app->db
-        ]);
-        break;
-      case "photo":
-        return $post->fetchAll(PDO::FETCH_CLASS,'\nano\Photo', [
+        return $post->fetchAll(PDO::FETCH_CLASS,'\compose\Post', [
           $this->app->db
         ]);
         break;
