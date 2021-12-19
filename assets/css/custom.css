@@ -15,3 +15,15 @@
 img.adminImageThumbnail {
     max-width:100%;
 }
+
+.card {
+    width:100%;
+}
+
+.card .card-meta {
+    z-index:100;
+}
+
+.card.draft {
+    background-color: #ffffeb;
+}

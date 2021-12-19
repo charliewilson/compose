@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-Regular.ttf') format('truetype');
+    font-family: 'Source Serif Pro';
+    src: url('fonts/SourceSerifPro-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 html {
-    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-family: "Source Serif Pro",Georgia,Times,Times New Roman,serif;
 }
 
 body {
@@ -16,10 +16,13 @@ body {
 
 a {
     text-decoration: none;
+    transition: color .3s, margin-top .3s, border-bottom-color .3s;
+    border-bottom:1px solid;
+    border-bottom-color: white;
 }
 
-a:hover {
-    text-decoration: underline;
+a:hover:not(.logo) {
+    margin-top:-3px;
 }
 
 div.container {
@@ -31,17 +34,13 @@ div.container {
 }
 
 header {
-    border-bottom:1px solid grey;
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    align-items:center;
-    padding:25px 0;
+    text-align:center;
+    padding-top: 25px;
 }
 
 header h1 {
     margin:0;
-    font-size:20px;
+    font-size:30px;
 }
 
 header h1 span {
@@ -63,19 +62,60 @@ header a.homepage-link:hover {
     color: #ababab;
 }
 
+header nav {
+    margin-top:15px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+header nav a {
+    margin:0 25px;
+}
+
+header .quill-hr {
+    width:100%;
+    display:flex;
+    align-items:center;
+    padding-top: 25px;
+}
+
+header .quill-hr .line {
+    flex:auto;
+    height:1px;
+    background:#808080;
+    margin:0 20px;
+}
+
+header .quill-hr img {
+    height:40px;
+    flex:none;
+}
+
 section a {
-    color: #0167a4;
+    color: #1f6632;
 }
 
 section a:hover,
 header a:hover{
-    color: #0191de;
+    color: #277e3e;
+}
+
+section a:hover,
+header a:hover:not(.logo){
+    border-bottom-color: #277e3e;
 }
 
 section.posts div.post {
     border-bottom:1px solid grey;
     line-height:1.6;
     font-size:16px;
+    padding-top:25px;
+    padding-bottom:25px;
+}
+
+section.posts div.post:first-of-type {
+    padding-top:0;
 }
 
 section.posts div.post:last-of-type {
