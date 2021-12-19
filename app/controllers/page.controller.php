@@ -124,7 +124,7 @@ class PageController {
   //LOGIN
   public function loginGet() {
     if ($this->app->auth->isLoggedIn()){
-      header("Location: /nano");
+      header("Location: /compose");
     } else {
       //Homepage
       try {
@@ -154,13 +154,13 @@ class PageController {
   
   public function loginPost() {
     if ($this->app->auth->isLoggedIn()) {
-      header("Location: /nano");
+      header("Location: /compose");
     } else {
       $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
       $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
       try {
         $this->app->auth->loginWithUsername($username, $password, (int)(60 * 60 * 24 * 365.25));
-        header("Location: /nano");
+        header("Location: /compose");
       } catch (UnknownUsernameException | InvalidPasswordException $e) {
         header("Location: /login?invalid");
       } catch (
@@ -174,14 +174,13 @@ class PageController {
     }
   }
   
-  //NANO
+  //COMPOSE
   public function adminHomeGet() {
     if ($this->app->auth->isLoggedIn()){
       try {
         echo $this->app->twig->render('admin/home.twig', [
           "me" => $this->app->auth->getUsername(),
-          "posts" => $this->app->postController->getAll(["ofType" => "post", "includeDrafts" => true]),
-          "photos" => $this->app->postController->getAll(["ofType" => "photo", "includeDrafts" => true])
+          "posts" => $this->app->postController->getAll(["ofType" => "post", "includeDrafts" => true])
         ]);
       } catch (LoaderError | RuntimeError | SyntaxError $e) {
         $this->errorMessage($e->getMessage());
@@ -230,7 +229,7 @@ class PageController {
       $response = $this->app->postController->create($_POST);
       
       if ($response === true) {
-        header("Location: /nano");
+        header("Location: /compose");
       } else {
         $this->app->pageController->errorMessage($response);
       }
@@ -261,7 +260,7 @@ class PageController {
       $response = $this->app->postController->update(filter_var($params['id'], FILTER_SANITIZE_NUMBER_INT),$_POST);
       
       if ($response === true) {
-        header("Location: /nano");
+        header("Location: /compose");
       } else {
         $this->app->pageController->errorMessage($response);
       }
@@ -276,7 +275,7 @@ class PageController {
       $response = $this->app->postController->create($_POST);
       
       if ($response === true) {
-        header("Location: /nano");
+        header("Location: /compose");
       } else {
         $this->app->pageController->errorMessage($response);
       }
@@ -307,7 +306,7 @@ class PageController {
       $response = $this->app->postController->update(filter_var($params['id'], FILTER_SANITIZE_NUMBER_INT),$_POST);
       
       if ($response === true) {
-        header("Location: /nano");
+        header("Location: /compose");
       } else {
         $this->app->pageController->errorMessage($response);
       }
@@ -322,7 +321,7 @@ class PageController {
       $response = $this->app->postController->delete(filter_var($params['id'], FILTER_SANITIZE_NUMBER_INT));
       
       if ($response === true) {
-        header("Location: /nano");
+        header("Location: /compose");
       } else {
         $this->app->pageController->errorMessage($response);
       }

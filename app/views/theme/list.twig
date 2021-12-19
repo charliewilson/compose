@@ -17,31 +17,16 @@
       <p>No posts yet...</p>
     {% else %}
       {% for post in posts %}
-        {% if post.type == "photo" %}
-          <div class="post type-photo">
-            <div class="body">
-              <img src="/media/uploads/{{ post.body.markdown }}">
-              <p>{{ post.title }}</p>
-            </div>
-            <p class="date">
-              <a href="/post/{{ post.id }}">{{ post.timestamp|date("d/m/y") }}</a>
-              {% if loggedIn %}
-                &mdash; <a href="/nano/photo/{{ post.id }}">Edit</a>
-              {% endif %}
-            </p>
-          </div>
-        {% else %}
-          <div class="post type-{{ post.type }}">
-          {% if post.title %}<p class="title">{{ post.title }}</p>{% endif %}
-          <div class="body">{{ post.body.html|raw }}</div>
-            <p class="date">
-              <a href="/post/{{ post.id }}">{{ post.timestamp|date("d/m/y") }}</a>
-              {% if loggedIn %}
-                &mdash; <a href="/nano/post/{{ post.id }}">Edit</a>
-              {% endif %}
-            </p>
-          </div>
-        {% endif %}
+      <div class="post type-{{ post.type }}">
+      {% if post.title %}<p class="title">{{ post.title }}</p>{% endif %}
+      <div class="body">{{ post.body.html|raw }}</div>
+        <p class="date">
+          <a href="/post/{{ post.id }}">{{ post.timestamp|date("d/m/y") }}</a>
+          {% if loggedIn %}
+            &mdash; <a href="/compose/post/{{ post.id }}">Edit</a>
+          {% endif %}
+        </p>
+      </div>
       {% endfor %}
     {% endif %}
   </section>

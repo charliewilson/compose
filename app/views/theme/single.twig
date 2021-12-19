@@ -20,7 +20,7 @@
         <p class="date">
           {{ post.date|date("d/m/y") }}
           {% if loggedIn %}
-            &mdash; <a href="/nano/post/{{ post.id }}">Edit</a>
+            &mdash; <a href="/compose/post/{{ post.id }}">Edit</a>
           {% endif %}
         </p>
       </div>

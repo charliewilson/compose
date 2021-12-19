@@ -116,38 +116,15 @@ class PostController {
   }
   
   public function create($fields) {
-  
-    $typeField = filter_var($fields['type'], FILTER_SANITIZE_STRING);
+
     $timestamp = filter_var($fields['timestamp'], FILTER_SANITIZE_STRING);
     $published = (array_key_exists("published", $fields)) ? 1 : 0;
     
-    if ($typeField == "post") {
-      $type = "post";
-      $title = htmlentities($fields['title']);
-      $body = htmlentities($fields['body']);
-    } elseif ($typeField == "photo") {
-  
-      $filename = (new DateTime)->getTimestamp();
-  
-      //upload image if attached
-      if (isset($_FILES['image']['tmp_name'])) {
-        $img = Image::make($_FILES['image']['tmp_name'])->orientate();
 
-        $img->resize(800, 655, function ($constraint) {
-          $constraint->aspectRatio();
-          $constraint->upsize();
-        });
+    $type = "post";
+    $title = htmlentities($fields['title']);
+    $body = htmlentities($fields['body']);
 
-        $img->save('media/uploads/' . $filename . '.jpg', 90);
-      } else {
-        header("Location: /nano/newphoto?nophoto");
-        die();
-      }
-  
-      $type = "photo";
-      $body = htmlentities($filename.".jpg");
-      $title = htmlentities($fields['title']);
-    }
   
     try {
       $people = $this->app->db->prepare("
