@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>words</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="words by charlie wilson" />
-  <link rel="stylesheet" href="/dist/css/style.css">
+    <title>{{ post.title }} | Alana Greene</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Alana Greene" />
+    <link rel="stylesheet" href="/dist/css/style.css">
 </head>
 <body>
 <div class="container">
-  <header>
-    <h1>words<span>.charlie.town</span></h1>
-    <a href="/" class="homepage-link">&#8592; back to blog</a>
-  </header>
-  <section class="posts">
-      <div class="post post-single type-{{ post.type }}">
-      {% if post.title %}<p class="title">{{ post.title }}</p>{% endif %}
-      <div class="body">{{ post.body.html|raw }}</div>
-        <p class="date">
-          {{ post.date|date("d/m/y") }}
-          {% if loggedIn %}
-            &mdash; <a href="/compose/post/{{ post.id }}">Edit</a>
-          {% endif %}
-        </p>
-      </div>
-  </section>
+    <header>
+        <h1><a href="/" class="logo">Alana Greene</a></h1>
+        <nav>
+            <a href="#">Posts</a>
+            <a href="#">Publications</a>
+            <a href="#">About</a>
+        </nav>
+        <div class="quill-hr">
+            <div class='line'></div>
+            <img src="/dist/img/quill.png">
+            <div class='line'></div>
+        </div>
+    </header>
+    <section class="posts">
+        <div class="post type-{{ post.type }}">
+            <div class="post-header">
+                <p class="title"><a href="/post/{{ post.id }}">{{ post.title }}</a></p>
+                <p class="date">{{ post.timestamp|date("F jS, Y") }}</p>
+            </div>
+            <div class="body">{{ post.body.html|raw }}</div>
+        </div>
+    </section>
+    <a href="/" class="homepage-link">&#8592; back home</a>
 </div>
 </body>
 </html>

@@ -56,10 +56,10 @@ header a:hover {
     color: #0191de;
 }
 
-header a.homepage-link {
+a.homepage-link {
     color:#777;
 }
-header a.homepage-link:hover {
+a.homepage-link:hover {
     color: #ababab;
 }
 
