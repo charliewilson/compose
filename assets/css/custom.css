@@ -27,3 +27,7 @@ img.adminImageThumbnail {
 .card.draft {
     background-color: #ffffeb;
 }
+
+.post-list .card-title {
+    margin-bottom:0;
+}

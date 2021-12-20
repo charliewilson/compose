@@ -1,6 +1,5 @@
 <?php
 namespace compose;
-use Parsedown;
 use PDO;
 
 class Post {
@@ -36,8 +35,8 @@ class Post {
   
   public function body() {
     return [
-      "markdown" => html_entity_decode($this->body),
-      "html" => Parsedown::instance()->text(html_entity_decode($this->body))
+      "html" => html_entity_decode($this->body),
+      "raw" => $this->body
     ];
   }
   

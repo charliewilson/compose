@@ -8,7 +8,6 @@
         "twig/intl-extra": "^3.3",
         "ext-curl": "*",
         "ext-json": "*",
-        "erusev/parsedown": "^1.7",
         "intervention/image": "^2.7"
     }
 }

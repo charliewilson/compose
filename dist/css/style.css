@@ -47,7 +47,8 @@ header h1 span {
     color: #999;
 }
 
-header a {
+header a,
+section.posts a {
     color: #000;
 }
 
@@ -122,15 +123,29 @@ section.posts div.post:last-of-type {
     border-bottom:none;
 }
 
+section.posts div.post div.post-header {
+    /*display:flex;*/
+    /*justify-content:space-between;*/
+    /*align-items: center;*/
+    padding-top:20px;
+}
+
 section.posts div.post p.title {
     font-weight:bold;
     font-size: 20px;
+    margin:0;
+}
+
+section.posts div.post p.title a {
+    border-bottom:none;
 }
 
 section.posts div.post p.date {
     font-style:italic;
-    font-size:12px;
-    color: #757575;
+    font-size:16px;
+    color: #9f9f9f;
+    line-height:normal;
+    margin:0;
 }
 
 section.posts div.post blockquote {
@@ -142,33 +157,6 @@ section.posts div.post blockquote {
 
 section.posts div.post img {
     max-width:100%;
-}
-
-section.posts div.post div.youtube {
-    position: relative;
-    max-width: 100%;
-    width:100%;
-    height: 0;
-    padding-bottom: 56.25%;
-}
-
-section.posts div.post div.youtube iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-section.posts div.post.type-photo div.body {
-    text-align:center;
-}
-
-section.posts div.post.type-photo img {
-    max-width:100%;
-    width:auto;
-    max-height: 600px;
-    margin-top:16px;
 }
 
 section.pagination {

@@ -9,7 +9,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/delight-im/cookie" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/delight-im/db" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/delight-im/http" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/erusev/parsedown" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
